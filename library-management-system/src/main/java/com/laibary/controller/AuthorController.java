@@ -22,7 +22,7 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    // ✅ Get all authors
+    //  Get all authors
     @GetMapping
     public ResponseEntity<List<Author>> getAllAuthors() {
         logger.info("Fetching all authors");
@@ -30,7 +30,7 @@ public class AuthorController {
         return ResponseEntity.ok(authors);
     }
 
-    // ✅ Create new author
+    //  Create new author
     @PostMapping
     public ResponseEntity<Author> createAuthor(@RequestBody Author author) {
         logger.info("Creating author: {}", author.getName());
@@ -38,7 +38,7 @@ public class AuthorController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedAuthor);
     }
 
-    // ✅ Get author by ID
+    //  Get author by ID
     @GetMapping("/{id}")
     public ResponseEntity<Author> getAuthorById(@PathVariable long id) {
         logger.info("Fetching author with ID: {}", id);
@@ -46,7 +46,7 @@ public class AuthorController {
         return ResponseEntity.ok(author);
     }
 
-    // ✅ Update author details
+    //  Update author details
     @PutMapping("/{id}")
     public ResponseEntity<Author> updateAuthor(@PathVariable long id, @RequestBody Author updatedAuthor) {
         logger.info("Updating author with ID: {}", id);
@@ -54,7 +54,7 @@ public class AuthorController {
         return ResponseEntity.ok(author);
     }
 
-    // ✅ Delete author by ID
+    //  Delete author by ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAuthor(@PathVariable long id) {
         logger.info("Deleting author with ID: {}", id);
@@ -62,7 +62,7 @@ public class AuthorController {
         return ResponseEntity.noContent().build();
     }
 
-    // ✅ Delete authors by name
+    //  Delete authors by name
     @DeleteMapping("/deleteByName/{name}")
     public ResponseEntity<Void> deleteAuthorsByName(@PathVariable String name) {
         logger.info("Deleting authors with name: {}", name);
@@ -70,28 +70,28 @@ public class AuthorController {
         return ResponseEntity.noContent().build();
     }
 
-    // ✅ Check if an author exists by ID
+    //  Check if an author exists by ID
     @GetMapping("/exists/{id}")
     public ResponseEntity<Boolean> existsById(@PathVariable long id) {
         boolean exists = authorService.existsById(id);
         return ResponseEntity.ok(exists);
     }
 
-    // ✅ Count total authors
+    //  Count total authors
     @GetMapping("/count")
     public ResponseEntity<Long> countAuthors() {
         long count = authorService.countAuthors();
         return ResponseEntity.ok(count);
     }
 
-    // ✅ Get authors by name
+    //  Get authors by name
     @GetMapping("/byName/{name}")
     public ResponseEntity<List<Author>> getAuthorsByName(@PathVariable String name) {
         List<Author> authors = authorService.getAuthorByName(name);
         return ResponseEntity.ok(authors);
     }
 
-    // ✅ Get sorted authors by name
+    //  Get sorted authors by name
     @GetMapping("/sorted")
     public ResponseEntity<List<Author>> getAuthorsSortedByName() {
         List<Author> authors = authorService.getAuthorsSortedByName();
